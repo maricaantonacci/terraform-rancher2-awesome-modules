@@ -1,3 +1,8 @@
+variable "cloud_credential_name" {
+  description = "vSphere/vCenter credential name in Rancher Cluster Manager."
+  type = string
+}
+
 variable "machine_config_name" {
   description = "The generated name for the machine config"
   default = "node-config"
