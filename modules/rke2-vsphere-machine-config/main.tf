@@ -2,7 +2,7 @@ data "rancher2_cloud_credential" "cloud_credential_name" {
     name = var.cloud_credential_name
 }
 
-# Create openstack machine config v2
+# Create vsphere machine config v2
 resource "rancher2_machine_config_v2" "machine" {
   generate_name              = var.machine_config_name
   vsphere_config {
@@ -25,13 +25,6 @@ resource "rancher2_machine_config_v2" "machine" {
 #    ssh_port                 = var.ssh_port
 #    ssh_password             = var.ssh_password
   }
-}
-
-output "machine_config_kind" {
-  value = rancher2_machine_config_v2.machine.kind
-}
-output "machine_config_name" {
-  value = rancher2_machine_config_v2.machine.name
 }
 
 
