@@ -62,18 +62,18 @@
   tasks:
     - name: Register Nodes to the Cluster.
       shell: ${cluster_node_command} --etcd --controlplane
-  when: all_in_one == false
+      when: all_in_one == false
 
 - name: register => worker nodes 
   hosts: worker_nodes
   tasks:
     - name: Register Nodes to the Cluster.
       shell: ${cluster_node_command} --worker
-  when: all_in_one == false
+      when: all_in_one == false
 
 - name: register => all-in-one nodes 
   hosts: all
   tasks:
     - name: Register Nodes to the Cluster.
       shell: ${cluster_node_command} --etcd --controlplane --worker
-  when: all_in_one == true
+      when: all_in_one == true
