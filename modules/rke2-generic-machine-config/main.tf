@@ -38,6 +38,7 @@ resource "local_file" "ansible_playbook" {
     {
       install_keepalived = var.install_keepalived
       cluster_node_command = var.cluster_node_command[0]
+      all_in_one = var.all_in_one
     })
   filename    = "${path.cwd}/ansible/playbook.yml"
 
