@@ -37,7 +37,8 @@
   vars:
     install_keepalived: ${install_keepalived}
     keepalived_vrrp_instance_name: BACKUP
-    keepalived_priority: {{ 101 | int + 1 }}
+    priority: 101
+    keepalived_priority: {{ priority | int + 1 }}
   tasks:
     - name: copy => keepalived.conf
       template:
