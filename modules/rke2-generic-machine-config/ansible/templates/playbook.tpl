@@ -39,8 +39,7 @@
     keepalived_vrrp_instance_name: BACKUP
     keepalived_priority: 101
   tasks:
-    - set_fact:
-      keepalived_priority={{ keepalived_priority | int + 1 }}
+    - set_fact: keepalived_priority={{ keepalived_priority | int + 1 }}
 
     - name: copy => keepalived.conf
       template:
