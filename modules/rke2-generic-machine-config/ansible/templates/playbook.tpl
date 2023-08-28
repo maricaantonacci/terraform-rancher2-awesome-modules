@@ -4,6 +4,7 @@
   become: true
   vars:
     install_keepalived: ${install_keepalived}
+    all_in_one: ${all_in_one}
   tasks:
     - name: install => linux-modules-extra for raspi4
       apt:
@@ -23,6 +24,7 @@
   vars: 
     install_keepalived: ${install_keepalived}
     keepalived_vrrp_instance_name: MASTER
+    keepalived_priority: 100
   tasks:
     - name: copy => keepalived.conf
       template:
@@ -36,6 +38,7 @@
   vars:
     install_keepalived: ${install_keepalived}
     keepalived_vrrp_instance_name: BACKUP
+    keepalived_priority: {{ 101 | int + 1 }}
   tasks:
     - name: copy => keepalived.conf
       template:
@@ -59,6 +62,8 @@
 
 - name: register => master nodes 
   hosts: master_nodes
+  vars:
+    all_in_one: ${all_in_one}
   tasks:
     - name: Register Nodes to the Cluster.
       shell: ${cluster_node_command} --etcd --controlplane
@@ -66,6 +71,8 @@
 
 - name: register => worker nodes 
   hosts: worker_nodes
+  vars:
+    all_in_one: ${all_in_one}
   tasks:
     - name: Register Nodes to the Cluster.
       shell: ${cluster_node_command} --worker
@@ -73,6 +80,8 @@
 
 - name: register => all-in-one nodes 
   hosts: all
+  vars:
+    all_in_one: ${all_in_one}
   tasks:
     - name: Register Nodes to the Cluster.
       shell: ${cluster_node_command} --etcd --controlplane --worker

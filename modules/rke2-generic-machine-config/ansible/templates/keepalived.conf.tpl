@@ -11,7 +11,7 @@ vrrp_instance VI_1 {
     state {{keepalived_vrrp_instance_name}}
     interface eth0
     virtual_router_id 101
-    priority 102
+    priority {{keepalived_priority}}
     advert_int 1
     authentication {
         auth_type PASS
