@@ -2,6 +2,11 @@ variable "install_keepalived" {
    type = bool
 }
 
+variable "all_in_one" {
+   type = bool
+   description = "install keepalived"
+}
+
 variable "keepalived_vip" {
    type = string
 }
