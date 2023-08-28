@@ -4,7 +4,6 @@
   become: true
   vars:
     install_keepalived: ${install_keepalived}
-    all_in_one: ${all_in_one}
   tasks:
     - name: install => linux-modules-extra for raspi4
       apt:
