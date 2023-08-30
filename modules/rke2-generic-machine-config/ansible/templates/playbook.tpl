@@ -80,10 +80,19 @@
       when: all_in_one == false
 
 - name: register => all-in-one nodes 
-  hosts: all
+  hosts: master_nodes[0]
   vars:
     all_in_one: ${all_in_one}
   tasks:
-    - name: Register Nodes to the Cluster.
+    - name: Register init nodes to the Cluster.
+      shell: ${cluster_node_command} --etcd --controlplane --worker
+      when: all_in_one == true
+
+- name: register => all-in-one nodes 
+  hosts: master_nodes[1:]
+  vars:
+    all_in_one: ${all_in_one}
+  tasks:
+    - name: Register other all-in-one nodes to the Cluster.
       shell: ${cluster_node_command} --etcd --controlplane --worker
       when: all_in_one == true
