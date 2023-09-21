@@ -28,10 +28,12 @@ variable chart_values {
 # Environment variables for the agent
 variable "agent_env_vars_name" {
   type        = string
+  default     = ""
   description = "Environment variables for the agent"
 }
 variable "agent_env_vars_value" {
   type        = string
+  default     = ""
   description = "Environment variables for the agent"
 }
 variable "control_plane_concurrency" {
