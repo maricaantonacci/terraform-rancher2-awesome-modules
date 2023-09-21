@@ -6,22 +6,17 @@ resource "rancher2_cluster_v2" "rke2_cluster" {
   enable_network_policy = var.enable_network_policy
   default_cluster_role_for_project_members = var.default_cluster_role_for_project_members
 
-  agent_env_vars {
-    name = "${var.agent_env_vars_name}"
-    value = "${var.agent_env_vars_value}"
-}
-
  rke_config {
     etcd {
-        disable_snapshots = "${var.disable_snapshots}"
-        snapshot_retention = "${var.snapshot_retention}"
-        snapshot_schedule_cron = "${var.snapshot_schedule_cron}"
+        disable_snapshots = false
+        snapshot_retention = 5
+        snapshot_schedule_cron = "0 */5 * * *"
     }
     machine_global_config = var.machine_global_config
     chart_values = var.chart_values
     upgrade_strategy {
-        control_plane_concurrency =  "${var.control_plane_concurrency}"
-        worker_concurrency =  "${var.worker_concurrency}"
+        control_plane_concurrency =  "1"
+        worker_concurrency =  "1"
     }
     machine_selector_config{
         config = {cloud_provider_name: "none"}
