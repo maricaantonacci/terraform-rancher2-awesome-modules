@@ -8,9 +8,9 @@ resource "rancher2_cluster_v2" "rke2_cluster" {
 
  rke_config {
     etcd {
-        disable_snapshots = false
-        snapshot_retention = 5
-        snapshot_schedule_cron = "0 */5 * * *"
+        disable_snapshots = var.disable_snapshots
+        snapshot_retention = var.snapshot_retention
+        snapshot_schedule_cron = var.snapshot_schedule_cron
     }
     machine_global_config = var.machine_global_config
     chart_values = var.chart_values
