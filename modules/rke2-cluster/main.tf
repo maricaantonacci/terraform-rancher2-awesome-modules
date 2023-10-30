@@ -6,6 +6,7 @@ resource "rancher2_cluster_v2" "rke2_cluster" {
   enable_network_policy = var.enable_network_policy
   default_cluster_role_for_project_members = "user"
   default_pod_security_policy_template_name = "unrestricted"
+  labels = var.rke2_cluster_labels
  rke_config {
     etcd {
         disable_snapshots = false
