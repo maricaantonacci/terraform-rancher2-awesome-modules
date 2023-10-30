@@ -36,7 +36,14 @@ variable machine_global_config {
    type = string
    description = "global configuration options for the rke cluster"
 }
+
 variable chart_values {
    type = string
    description = "rke provided helm charts chart values"
+}
+
+# Define the list of labels as variables
+variable "rke2_cluster_labels" {
+  description = "Labels for the RKE2 cluster"
+  type        = map(string)
 }
