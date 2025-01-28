@@ -19,6 +19,7 @@ variable enable_network_policy {
 variable "machine_pools" {
   type = map(object({
     name                      = string
+    machine_labels            = optional(map(string))
     cloud_credential_secret_name = string
     control_plane_role        = bool
     etcd_role                 = bool
