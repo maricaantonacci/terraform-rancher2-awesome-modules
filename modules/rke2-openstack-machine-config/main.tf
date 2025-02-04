@@ -1,7 +1,3 @@
-data "rancher2_cloud_credential" "cloud_credential_name" {
-    name = var.cloud_credential_name
-}
-
 # Create openstack machine config v2
 resource "rancher2_machine_config_v2" "machine" {
   generate_name       = var.machine_config_name
