@@ -6,7 +6,7 @@ resource "rancher2_cluster_v2" "rke2_cluster" {
   enable_network_policy = var.enable_network_policy
   default_cluster_role_for_project_members = "user"
   labels = var.rke2_cluster_labels
- rke_config {
+  rke_config {
     etcd {
         disable_snapshots = false
         snapshot_retention = 5
@@ -33,9 +33,6 @@ resource "rancher2_cluster_v2" "rke2_cluster" {
     upgrade_strategy {
         control_plane_concurrency =  "1"
         worker_concurrency =  "1"
-    }
-    machine_selector_config{
-        config = {cloud_provider_name: "none"}
     }
     registries {}
   }
