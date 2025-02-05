@@ -1,8 +1,4 @@
 ## Openstack Cloud variables
-variable cloud_credential_name {
-   type = string
-   description = "openstack cloud credential name for rancher, this is a bug that we are aware of. just create an empty cloud credential named test in rancher"
-}
 variable machine_config_name {
    type = string
    default = "node-config"

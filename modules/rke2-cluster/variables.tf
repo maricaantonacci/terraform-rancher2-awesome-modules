@@ -1,7 +1,3 @@
-variable cloud_credential_name {
-   type = string
-   description = "openstack cloud credential name for rancher, this is a bug from rancher. just create an empty cloud credential named test in rancher"
-}
 variable cluster_name {
    type = string
    description = "name of the rke cluster"
