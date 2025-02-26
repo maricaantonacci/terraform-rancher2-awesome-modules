@@ -41,6 +41,7 @@ resource "rancher2_cluster_v2" "rke2_cluster" {
         config = { for key, value in machine_selector_config.value.config : key => tostring(value) }
       }
     }
+  }
 }
 
 output "rancher_cluster_id" {
