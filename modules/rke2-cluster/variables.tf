@@ -24,7 +24,7 @@ variable "machine_pools" {
         key = string
         value = string
         effect = string
-    })))
+    })), [])
     quantity                  = number
     machine_config = object({
       kind = string
