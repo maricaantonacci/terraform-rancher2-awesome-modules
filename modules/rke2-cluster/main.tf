@@ -17,7 +17,6 @@ resource "rancher2_cluster_v2" "rke2_cluster" {
       content {
         name                      = machine_pools.value.name
         machine_labels            = machine_pools.value.machine_labels
-        taints                    = machine_pools.value.taints
         cloud_credential_secret_name = machine_pools.value.cloud_credential_secret_name
         control_plane_role        = machine_pools.value.control_plane_role
         etcd_role                 = machine_pools.value.etcd_role
@@ -27,6 +26,14 @@ resource "rancher2_cluster_v2" "rke2_cluster" {
           kind = machine_pools.value.machine_config.kind
           name = machine_pools.value.machine_config.name
         }
+        dynamic "taints" {
+          for_each = machine_pools.value.taints
+            content {
+              key    = taints.value.key
+              value  = taints.value.value
+              effect = taints.value.effect
+            }
+          }
       }
     }
     machine_global_config = var.machine_global_config
