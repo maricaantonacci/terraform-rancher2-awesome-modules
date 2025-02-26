@@ -38,7 +38,7 @@ resource "rancher2_cluster_v2" "rke2_cluster" {
     dynamic "machine_selector_config" {
       for_each = var.machine_selector_config
       content {
-        config = { for key, value in machine_selector_config.value.config : key => tostring(value) }
+        config = jsonencode(machine_selector_config.value.config)
       }
     }
   }
