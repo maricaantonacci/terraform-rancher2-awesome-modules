@@ -35,6 +35,7 @@ resource "rancher2_cluster_v2" "rke2_cluster" {
         worker_concurrency =  "1"
     }
     registries {}
+    machine_selector_config{}
   }
 }
 
