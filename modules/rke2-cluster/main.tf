@@ -35,13 +35,7 @@ resource "rancher2_cluster_v2" "rke2_cluster" {
         worker_concurrency =  "1"
     }
     registries {}
-    dynamic "machine_selector_config" {
-      for_each = var.machine_selector_config
-      content {
-        config = machine_selector_config.value.config
-      }
-    }
-  }
+    machine_global_config = var.machine_global_config
 }
 
 output "rancher_cluster_id" {
