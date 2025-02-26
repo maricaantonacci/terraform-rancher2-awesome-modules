@@ -38,8 +38,7 @@ resource "rancher2_cluster_v2" "rke2_cluster" {
     dynamic "machine_selector_config" {
       for_each = var.machine_selector_config
       content {
-        label_selector = machine_selector_config.value.label_selector
-        config         = machine_selector_config.value.config
+        config = machine_selector_config.value.config
       }
     }
   }
