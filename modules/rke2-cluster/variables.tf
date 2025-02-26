@@ -44,3 +44,12 @@ variable "rke2_cluster_labels" {
   description = "Labels for the RKE2 cluster"
   type        = map(string)
 }
+
+variable "machine_selector_config" {
+  description = "Machine selector config for the RKE2 cluster"
+  type        = list(object({
+    label_selector = map(string)
+    config         = map(string)
+  }))
+  default     = []
+}
